@@ -834,13 +834,13 @@ public class Assumptions {
   /**
    * Creates a new instance of <code>{@link CollectionAssert}</code> assumption.
    *
-   * @param <ELEMENT> the type of elements.
+   * @param <E> the type of elements.
    * @param actual the actual value.
    * @return the created assumption for assertion object.
    * @since 3.21.0
    */
   @SuppressWarnings("unchecked")
-  public static <ELEMENT> FactoryBasedNavigableCollectionAssert<CollectionAssert<ELEMENT>, Collection<? extends ELEMENT>, ELEMENT, ObjectAssert<ELEMENT>> assumeThat(Collection<? extends ELEMENT> actual) {
+  public static <E> AbstractCollectionAssert<?, Collection<? extends E>, E, ObjectAssert<E>> assumeThat(Collection<? extends E> actual) {
     return asAssumption(CollectionAssert.class, Collection.class, actual);
   }
 
@@ -1305,7 +1305,7 @@ public class Assumptions {
   public static void setPreferredAssumptionException(PreferredAssumptionException preferredAssumptionException) {
     AssumptionExceptionFactory.setPreferredAssumptionException(preferredAssumptionException);
   }
-  
+
   // private methods
 
   private static <ASSERTION, ACTUAL> ASSERTION asAssumption(Class<ASSERTION> assertionType,
